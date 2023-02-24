@@ -82,3 +82,4 @@ class Weapons(Base):
 # Connects to database and creates the Weapons table with columns
 engine = create_engine('postgresql://localhost/za4')
 Base.metadata.create_all(engine)
+

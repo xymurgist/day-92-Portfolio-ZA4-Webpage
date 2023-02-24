@@ -74,3 +74,4 @@ for key in weapons:
 
 weapon = Weapon(**props)
 pprint(vars(weapon))
+

@@ -397,21 +397,5 @@ def prepare_data():
         print('\n=== Complete weapons file created... ===\n')
 
 
-def determine_column_names():
-    column_list = []
-    with open('all_weapons.json', 'r') as file:
-        contents = json.load(file)
-        for key in contents:
-            for column_name in contents[key]:
-                if column_name not in column_list:
-                    column_list.append(column_name)
-    count = 1
-    for item in column_list:
-        # print(f'{count}: {item}')
-        # count += 1
-        print(item)
-
-
 # start data preparation
-# prepare_data()
-determine_column_names()
+prepare_data()
