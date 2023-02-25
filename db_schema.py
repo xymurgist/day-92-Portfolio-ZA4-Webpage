@@ -1,5 +1,6 @@
-from sqlalchemy import String, create_engine
+from sqlalchemy import String
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+from db_engine import engine as engine
 
 
 class Base(DeclarativeBase):
@@ -68,5 +69,4 @@ class Weapons(Base):
 
 
 # Connects to database and creates the Weapons table and columns
-engine = create_engine('postgresql://localhost/za4')
 Base.metadata.create_all(engine)

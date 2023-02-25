@@ -1,12 +1,13 @@
 from sqlalchemy.orm import Session
-import db_schema as schema
+from db_engine import engine as engine
+from db_schema import Weapons as Weapons
 from za4_weapon_class import Weapon as weapon_props
 
 
 # Insert data into table
-with Session(schema.engine) as session:
+with Session(engine) as session:
     for prop in weapon_props.set_weapon_props():
-        weapon = schema.Weapons(
+        weapon = Weapons(
             ammo_cost_black = prop.ammo_cost_black,
             ammo_cost_black_high_damage = prop.ammo_cost_black_high_damage,
             ammo_cost_red = prop.ammo_cost_red,

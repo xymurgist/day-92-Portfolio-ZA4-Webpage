@@ -174,9 +174,8 @@ def values_to_int(values_as_lists):
 
 
 def map_values_to_keys(values_as_int):
-    """Convert dict into lists to manipulate strings. For any value that is a list, 
-    alter the key with meaningful strings, then pair with the associated list-item.
-    Lastly, convert all list pairs into key:value pairs in a dict"""
+    """Convert dict into lists to manipulate strings. For any value that is a list, alter the key with meaningful strings,
+    then pair with the associated list-item. Lastly, convert all list pairs into key:value pairs in a dict"""
     
     combo_lists = []
 
@@ -188,7 +187,8 @@ def map_values_to_keys(values_as_int):
 
         # if value is not a list, create a list with the key and value
         if type(value) != list:
-            if key == 'Approx Drop Level' or key == 'Augmented DPS' or key == 'Augmented Pierce DPS' or key == 'Capacity' or key == 'Damage/Pellet' or key == 'Pierce' or key == 'Pierce DPS' or key == 'Single DPS':
+            if key == 'Approx Drop Level' or key == 'Augmented DPS' or key == 'Augmented Pierce DPS' \
+                or key == 'Capacity' or key == 'Damage/Pellet' or key == 'Pierce' or key == 'Pierce DPS' or key == 'Single DPS':
                 key_changed = key + ' ' + 'Standard'
                 items_split = list((key_changed, value))
                 combo_lists.append(items_split)
