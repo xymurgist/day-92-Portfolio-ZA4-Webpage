@@ -117,11 +117,13 @@ def regex_weapon_str(weapon_str):
     remove_cm_451_starburst = re.sub(r'\([Ss]team\)', r'', remove_cm_440_titan)
     replace_cm_451_starburst = re.sub(r'XXXX|XX00', r'0', remove_cm_451_starburst)
     remove_heartburn = re.sub(r'\sStandard|\sRPS', r'', replace_cm_451_starburst)
-    remove_hardthorn = re.sub(r'\(Steam Version\)|\(mobile\)|\(6 on mobile\)|6\s+', r'', remove_heartburn)
-    remove_1887_shockfield = re.sub(r'\s/|\(\d+/mag\)|Still works like a ', r'', remove_hardthorn)
+    remove_hardthorn = re.sub(r'\(Steam Version\)|\(mobile\)|\(6 on mobile\)', r'', remove_heartburn)
+    replace_hardthorn = re.sub(r'6\s+(8)', r'\1', remove_hardthorn)
+    remove_1887_shockfield = re.sub(r'\s/|\(\d+/mag\)|Still works like a ', r'', replace_hardthorn)
     remove_tombstone = re.sub(r'or\s400', r'', remove_1887_shockfield)
     remove_proposition = re.sub(r'\(400 in mobile\)|\(\d+kg\)', r'', remove_tombstone)
-    remove_t101_feldhaubitz = re.sub(r'\s+0.8\s+\(Mobile\)', r'', remove_proposition)
+    replace_cm_800_jupiter = re.sub(r'(6)\s+/\s+', r'\1', remove_proposition)
+    remove_t101_feldhaubitz = re.sub(r'\s+0.8\s+\(Mobile\)', r'', replace_cm_800_jupiter)
     remove_shredder = re.sub(r'\[2 Rps Mobile\]|24 \[MOBILE\]\s', r'', remove_t101_feldhaubitz)
 
     replace_free = re.sub(r'Free\s\sunlimited', r'0  0', remove_shredder)
@@ -389,6 +391,7 @@ def prepare_data():
         else:
             pass
             # print(f"Skipping {weapon_name}")
+        final_weapon_dict['Weapon Name'] = weapon_name
         all_weapons_dict[weapon_name] = final_weapon_dict
     
     # save the full dict to a json file; eventually save to db instead
