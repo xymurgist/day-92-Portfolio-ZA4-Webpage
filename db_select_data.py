@@ -5,14 +5,16 @@ from db_schema import Weapons as Weapons
 
 session = Session(engine)
 
-stmt = select(Weapons).where(Weapons.name.in_(["spongebob", "sandy"]))
-
-for user in session.scalars(stmt):
-    print(user)
-
-
 # Select data from table
-# session = Session(schema.engine)
-# stmt = select(schema.Weapons).where(schema.Weapons.name.in_(["spongebob", "sandy"]))
-# for weapon in session.scalars(stmt):
-#     print(weapon)
+
+stmt = select(Weapons)
+# stmt = select(Weapons).where(Weapons.weapon_name == "HVM 001")
+result = session.execute(stmt)
+for item in result.scalars():
+    print(item.manufacturer)
+# print(result.all())
+
+result2 = session.scalars(stmt)
+for item in result2:
+    print(item.weapon_name)
+# print(result2.all())
